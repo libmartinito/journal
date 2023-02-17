@@ -6,3 +6,42 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+enum Span {
+  DAILY
+  MONTHLY
+  FUTURE
+}
+
+enum Type {
+  TASK
+  EVENT
+  NOTE
+}
+
+enum Status {
+  ACTIVE
+  INACTIVE
+  MOVED_MONTHLY
+  MOVED_FUTURE
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  user_id    String   @unique
+  email      String   @unique
+  logs       Log[]
+  created_at DateTime @default(now())
+}
+
+model Log {
+  id         Int      @id @default(autoincrement())
+  user_id    String
+  span       Span
+  type       Type
+  message    String
+  status     Status
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  author     User     @relation(fields: [user_id], references: [user_id])
+}
