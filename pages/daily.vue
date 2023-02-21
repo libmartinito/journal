@@ -24,7 +24,11 @@ const arr = [
     </div>
     <div class="mx-6 my-10 flex flex-col gap-2">
       <button class="bg-neutral-800 text-neutral-200 w-full py-2">add</button>
-      <button class="bg-neutral-100 border-2 border-neutral-800 w-full py-1.5 box-border">select day</button>
+      <button
+        class="bg-neutral-100 border-2 border-neutral-800 w-full py-1.5 box-border"
+      >
+        select day
+      </button>
     </div>
   </section>
 </template>
